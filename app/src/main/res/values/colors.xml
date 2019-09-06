@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#ffffff</color>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="debugbox_colorPrimary">#3F51B5</color>
+    <color name="debugbox_colorPrimaryDark">#303F9F</color>
+    <color name="debugbox_colorAccent">#FF4081</color>
+
+    <!--theme color-->
+    <color name="debugbox_themeGray">#DEDEDE</color>
+    <!--basic color-->
+    <color name="debugbox_mainBlack">#242828</color>
+    <color name="debugbox_mainBlack5B">#5b5b5b</color>
+    <color name="debugbox_mainRed">#ff3955</color>
+    <color name="debugbox_mainBlue">#4277fb</color>
+    <color name="debugbox_mainWhite">#ffffff</color>
+    <color name="debugbox_mainGrayF8">#f8f8f8</color>
+    <color name="debugbox_mainGrayF0">#f0f0f0</color>
+    <color name="debugbox_mainGrayC6">#c6c6c6</color>
+    <color name="debugbox_mainGray88">#888888</color>
+
+    <!--font color-->
+    <color name="debugbox_fontGray88">#888888</color>
+    <color name="debugbox_fontGrayC6">#c6c6c6</color>
+    <color name="debugbox_fontBlack">#242828</color>
+    <color name="debugbox_fontRed">#ff3955</color>
+
+
+    <!---->
+    <color name="debugbox_colorRed">#ff0112</color>
+    <color name="debugbox_colorGray">#a4a2a2</color>
+    <color name="debugbox_colorGreen">#05f449</color>
+    <color name="debugbox_colorWhite">#ffffff</color>
+    <color name="debugbox_colorBlack">#000000</color>
+
+    <color name="debugbox_widget_background_color">#CF1E1E24</color>
+    <color name="debugbox_green_bg_color">#4DB872</color>
+    <color name="debugbox_orange_bg_color">#FF9B00</color>
+    <color name="debugbox_blue_bg_color">#3075EE</color>
 </resources>

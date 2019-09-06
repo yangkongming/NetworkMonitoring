@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">NetworkMonitoring</string>
+
+    <string name="toolbar_debug_list">调试工具</string>
+    <string name="tv_upload">上报</string>
+    <string name="tv_copy">复制</string>
+    <string name="device_info">设备信息</string>
+    <string name="net_test">网络检测</string>
+    <string name="webview_text">网页测试</string>
+    <string name="net_debug_text">网络调试</string>
+    <string name="weex_debug_text">WeeX调试</string>
+    <string name="domain_name">域名:</string>
+    <string name="start_debug">开始诊断</string>
+
+    <string name="http_detail">请求详情</string>
 </resources>
