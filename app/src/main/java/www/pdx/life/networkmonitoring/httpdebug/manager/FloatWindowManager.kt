@@ -1,4 +1,4 @@
-package www.pdx.life.networkmonitoring.httpdebug
+package www.pdx.life.networkmonitoring.httpdebug.manager
 
 import android.content.Context
 import android.os.Handler

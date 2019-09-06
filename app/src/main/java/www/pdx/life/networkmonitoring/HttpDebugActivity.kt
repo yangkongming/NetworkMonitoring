@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.widget.LinearLayout
 
 import www.pdx.life.networkmonitoring.httpdebug.UntouchableSwitchCompat
-import www.pdx.life.networkmonitoring.httpdebug.FloatWindowManager
+import www.pdx.life.networkmonitoring.httpdebug.manager.FloatWindowManager
 import www.pdx.life.networkmonitoring.httpdebug.floatwindow.FloatWindow
+
 
 class HttpDebugActivity : AppCompatActivity() {
 
@@ -39,4 +40,5 @@ class HttpDebugActivity : AppCompatActivity() {
         }
         mUntouchableSwitchCompat?.isChecked = checked
     }
+
 }

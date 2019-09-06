@@ -2,12 +2,6 @@ package www.pdx.life.networkmonitoring.httpdebug.interceptor;
 
 import android.util.Log;
 
-import com.okinc.biz.config.BizConfigKey;
-import com.okinc.components.track.TrackExtKt;
-import com.okinc.core.config.ConfigExtKt;
-import com.okinc.core.net.http.HttpReportEvent;
-import com.okinc.debugbox.FloatWindowManager;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +12,7 @@ import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor.Logger;
 import okio.Buffer;
 import okio.BufferedSource;
+import www.pdx.life.networkmonitoring.httpdebug.manager.FloatWindowManager;
 
 /**
  * Requests Debug 调试
@@ -61,14 +56,9 @@ public class HttpInterceptor implements Interceptor {
                                     + response.request().url().encodedPath() + "|"
                                     + TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - startNs) + "|"
                                     + response.message());
-                    TrackExtKt.onEvent(httpReportEvent.key, httpReportEvent.map);
-                    if (ConfigExtKt.getConfigValue(BizConfigKey.KEY_IS_HTTP_DEBUG_ENABLE, false)) {
-                        FloatWindowManager.Companion.get().addMsg(request, e.getMessage());
-                    }
+                    FloatWindowManager.Companion.get().addMsg(request, e.getMessage());
                 } else {
-                    if (ConfigExtKt.getConfigValue(BizConfigKey.KEY_IS_HTTP_DEBUG_ENABLE, false)) {
-                        FloatWindowManager.Companion.get().addMsg(request, e.getMessage());
-                    }
+                    FloatWindowManager.Companion.get().addMsg(request, e.getMessage());
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -80,10 +70,8 @@ public class HttpInterceptor implements Interceptor {
         long contentLength;
         try {
             contentLength = response.body().contentLength();
-            if (ConfigExtKt.getConfigValue(BizConfigKey.KEY_IS_HTTP_DEBUG_ENABLE, false)) {
-                ResponseBody body = cloneResponseBody(response);
-                FloatWindowManager.Companion.get().addMsg(response, body);
-            }
+            ResponseBody body = cloneResponseBody(response);
+            FloatWindowManager.Companion.get().addMsg(response, body);
 
         } catch (Exception ex) {
             contentLength = -1;
@@ -114,7 +102,6 @@ public class HttpInterceptor implements Interceptor {
                 } else if (tookMs > REPORT_TIMEOUT_MS) {
                     httpReportEvent.setKey(HttpReportEvent.REQUEST_TIMEOUT);
                 }
-                TrackExtKt.onEvent(httpReportEvent.key, httpReportEvent.map);
                 Log.d(TAG, "request timeout :" + "request " + response.code() + ' ' + response.request().url().encodedPath() +
                         " (" + tookMs + "ms" + ", " + bodySize + ")");
             }
