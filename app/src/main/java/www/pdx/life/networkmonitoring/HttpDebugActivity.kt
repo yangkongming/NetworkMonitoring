@@ -33,7 +33,7 @@ class HttpDebugActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        var checked = if (FloatWindow.get(FloatWindowManager.TAG_DETAIL) == null) {
+        val checked = if (FloatWindow.get(FloatWindowManager.TAG_DETAIL) == null) {
             false
         } else {
             FloatWindow.get(FloatWindowManager.TAG_DETAIL).isShowing || FloatWindow.get(FloatWindowManager.TAG_ICON).isShowing

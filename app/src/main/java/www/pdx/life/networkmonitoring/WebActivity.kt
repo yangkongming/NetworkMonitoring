@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.webkit.*
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
@@ -17,8 +18,9 @@ import java.io.IOException
 class WebActivity : AppCompatActivity() {
 
     private var jsStr = ""
-    private var url = "http://www.baidu.com"
+    private var url = "file:///android_asset/h5jstest.html"
     private var mLayoutWeb: FrameLayout? = null
+    private var mbtn: Button? = null
     private val mWebViewClient: OkWebViewClient by lazy { OkWebViewClient() }
     private val mWebChromeClient: OkWebChromeClient by lazy { OkWebChromeClient() }
     private val mBridgeWebViewManager: BridgeWebViewManager by lazy { BridgeWebViewManager(mAgentWeb.webCreator.webView) }
@@ -39,7 +41,7 @@ class WebActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
         mLayoutWeb = findViewById(R.id.web)
-
+        mbtn = findViewById(R.id.jsbrage)
         mAgentWeb.webCreator.webView.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
         //H5 innerwidth error https://github.com/Justson/AgentWeb/issues/84
         mAgentWeb.agentWebSettings.webSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
@@ -51,7 +53,7 @@ class WebActivity : AppCompatActivity() {
         mAgentWeb.agentWebSettings.webSettings.minimumFontSize = 1
 
         //user-agent
-        mAgentWeb.agentWebSettings.webSettings.userAgentString =  "Unsafe_environment"
+        mAgentWeb.agentWebSettings.webSettings.userAgentString = "Unsafe_environment"
 
         //localStorage
         mAgentWeb.agentWebSettings.webSettings.javaScriptEnabled = true
@@ -81,8 +83,28 @@ class WebActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
+
+        mbtn?.setOnClickListener {
+            mAgentWeb.webCreator.webView.loadUrl("file:///android_asset/h5jstest.html")
+        }
     }
 
+    override fun onResume() {
+        mAgentWeb.webLifeCycle.onResume()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        mAgentWeb.webLifeCycle.onPause()
+        super.onPause()
+    }
+
+
+    override fun onDestroy() {
+        mAgentWeb.webLifeCycle.onDestroy()
+        mBridgeWebViewManager.release()
+        super.onDestroy()
+    }
 
     inner class OkWebViewClient : WebViewClient() {
 

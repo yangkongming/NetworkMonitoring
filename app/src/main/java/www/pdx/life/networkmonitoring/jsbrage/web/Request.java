@@ -63,6 +63,7 @@ public class Request extends IManager implements INative {
             case METHOD_GET_TK:
                 break;
             case METHOD_GET_TDEVICEID:
+                getDeviceID(message);
                 break;
             case METHOD_GET_WEEX_CONFIG:
                 break;
@@ -81,5 +82,14 @@ public class Request extends IManager implements INative {
         }
     }
 
+    /**
+     * 获取设备Id
+     *
+     * @param message
+     */
+    private void getDeviceID(final Message message) {
+        String deviceId = "1234567890";
+        invokeSuccess(message, deviceId);
+    }
 
 }

@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import www.pdx.life.networkmonitoring.httpdebug.interceptor.HttpInterceptor;
 import www.pdx.life.networkmonitoring.httpdebug.interceptor.RequestsLogger;
+import www.pdx.life.networkmonitoring.jsbrage.web.JsBridgeHelper;
 
 public class MyApplication extends Application {
 
@@ -25,6 +26,9 @@ public class MyApplication extends Application {
                 .retryOnConnectionFailure(true);
         HttpInterceptor logging = new HttpInterceptor(new RequestsLogger());
         builder.addInterceptor(logging);
+
+        //初始化JsBridge
+        JsBridgeHelper.init();
     }
 
     public OkHttpClient.Builder getBuilder() {
