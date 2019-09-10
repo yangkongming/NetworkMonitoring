@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".WebActivity"></activity>
         <activity android:name=".DebugActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".HttpDebugActivity">
-
-        </activity>
+        <activity android:name=".HttpDebugActivity"></activity>
         <activity
             android:name=".httpdebug.floatwindow.FloatActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".NetworkActivity">
-
-        </activity>
+        <activity android:name=".NetworkActivity"></activity>
     </application>
 
 </manifest>

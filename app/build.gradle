@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin:'kotlin-android'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -36,4 +37,8 @@ dependencies {
     api 'com.alibaba:fastjson:1.1.61.android'
     api 'com.squareup.okhttp3:okhttp:3.10.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //jsbrage
+    api 'com.just.agentweb:agentweb:4.0.2' // (必选)
+    api 'com.just.agentweb:filechooser:4.0.2'//WebView
 }
