@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_item_info"
+        android:icon="@drawable/ic_info"
+        android:title="说明"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_item_notification_entry"
+        android:checkable="true"
+        android:checked="false"
+        android:title="通知栏入口"
+        app:showAsAction="never" />
+</menu>

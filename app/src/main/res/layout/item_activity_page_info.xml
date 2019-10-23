@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:divider="@drawable/divider"
+        android:minHeight="40dp"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="start"
+            android:gravity="end|center_vertical"
+            android:paddingEnd="2dp"
+            android:singleLine="true"
+            android:text="@{pageInfo.name}" />
+
+        <TextView
+            android:id="@+id/tv_average_time"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical|end"
+            android:minWidth="80dp"
+            android:singleLine="true"
+            android:text="@{GlobalFormat.formatDisplayTime(pageInfo.averageTime)}"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="40dp"
+            android:singleLine="true"
+            android:text="@{String.valueOf(pageInfo.size)}"
+            android:textIsSelectable="true" />
+    </LinearLayout>
+
+    <data>
+
+        <import type="www.pdx.life.networkmonitoring.util.GlobalFormat" />
+
+        <variable
+            name="pageInfo"
+            type="www.pdx.life.networkmonitoring.profiler.PageInfo" />
+    </data>
+</layout>

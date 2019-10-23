@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.okinc.core.profiler.AppLaunchTimer
 
 import www.pdx.life.networkmonitoring.LDNetDiagnoService.LDNetDiagnoListener
 import www.pdx.life.networkmonitoring.LDNetDiagnoService.NetDiagnoService
@@ -24,6 +25,10 @@ class NetworkActivity : AppCompatActivity() {
     private var isRunning = false
     private var mNetDiagnoseService: NetDiagnoService? = null
     private var domainName: String? = ""
+
+    init {
+        AppLaunchTimer.startTimer(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,5 +92,10 @@ class NetworkActivity : AppCompatActivity() {
         if (mNetDiagnoseService != null) {
             mNetDiagnoseService!!.stopNetDialogsis()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AppLaunchTimer.stopTimerWhenIdle(this)
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
+import com.okinc.core.profiler.AppLaunchTimer
 import www.pdx.life.networkmonitoring.jsbrage.JsBridge
 import www.pdx.life.networkmonitoring.jsbrage.web.BridgeWebViewManager
 import www.pdx.life.networkmonitoring.jsbrage.web.JsInterface
@@ -36,6 +37,12 @@ class WebActivity : AppCompatActivity() {
                 .ready()
                 .go(url)//去除两边空格，后台有可能返回前后带有空格的url
     }
+
+
+    init {
+        AppLaunchTimer.startTimer(this)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +99,7 @@ class WebActivity : AppCompatActivity() {
     override fun onResume() {
         mAgentWeb.webLifeCycle.onResume()
         super.onResume()
+        AppLaunchTimer.stopTimerWhenIdle(this)
     }
 
     override fun onPause() {

@@ -3,6 +3,7 @@ package www.pdx.life.networkmonitoring
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import com.okinc.core.profiler.AppLaunchTimer
 
 import www.pdx.life.networkmonitoring.httpdebug.UntouchableSwitchCompat
 import www.pdx.life.networkmonitoring.httpdebug.manager.FloatWindowManager
@@ -13,6 +14,10 @@ class HttpDebugActivity : AppCompatActivity() {
 
     private var mUntouchableSwitchCompat: UntouchableSwitchCompat? = null
     private var mLinearLayout: LinearLayout? = null
+
+    init {
+        AppLaunchTimer.startTimer(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,7 @@ class HttpDebugActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        AppLaunchTimer.stopTimerWhenIdle(this)
         val checked = if (FloatWindow.get(FloatWindowManager.TAG_DETAIL) == null) {
             false
         } else {
